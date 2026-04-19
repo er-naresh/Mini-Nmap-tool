@@ -166,3 +166,11 @@ footer {
   font-family: 'Share Tech Mono', monospace;
   font-size: 10px; color: rgba(57,255,20,0.4); letter-spacing: 0.25em;
 }
+footer {
+    background: black;
+    color: #00ff00;
+    font-family: monospace;
+}
+footer a:hover {
+    color: #00ffaa;
+}
