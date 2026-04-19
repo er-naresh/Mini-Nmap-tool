@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini-Nmap · Advanced Network Scanner</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>╔═ MINI-NMAP ═╗</h1>
+      <p class="subtitle">Advanced Network Scanner · v1.0 · multithreaded · banner-grab</p>
+      <div class="stats">
+        <div class="stat"><span class="label">TOTAL</span><span id="stat-total" class="cyan">000</span></div>
+        <div class="stat"><span class="label">OPEN</span><span id="stat-open" class="green">000</span></div>
+        <div class="stat"><span class="label">CLOSED</span><span id="stat-closed" class="red">000</span></div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside>
+        <section class="panel">
+          <h2>▣ Scan Config</h2>
+          <form id="scan-form">
+            <label>▸ Target Host / IP
+              <input id="target" value="scanme.nmap.org" required />
+            </label>
+            <div class="row">
+              <label>▸ Start Port
+                <input id="start_port" type="number" min="1" max="65535" value="1" />
+              </label>
+              <label>▸ End Port
+                <input id="end_port" type="number" min="1" max="65535" value="1024" />
+              </label>
+            </div>
+            <button id="scan-btn" type="submit">▶ Start Scan</button>
+          </form>
+          <p class="warn">⚠ Scan only hosts you own or have explicit permission to test.</p>
+        </section>
+
+        <section class="panel">
+          <h2>▣ Output</h2>
+          <label class="checkbox">
+            <input type="checkbox" id="show-closed" />
+            Show closed ports
+          </label>
+          <button id="export-btn" type="button" disabled>⬇ Export JSON</button>
+        </section>
+      </aside>
+
+      <section class="terminal">
+        <div class="title-bar">
+          <span class="dot red"></span>
+          <span class="dot amber"></span>
+          <span class="dot green"></span>
+          <span class="prompt">root@nmap-mini:~#</span>
+          <span id="status-badge" class="status hidden">● SCANNING</span>
+        </div>
+        <div id="output" class="output">
+          <div class="muted">// configure target and press START SCAN</div>
+        </div>
+        <div id="scan-bar" class="scan-bar hidden"></div>
+      </section>
+    </div>
+
+    <footer>── FOR EDUCATIONAL USE ONLY · SCAN ONLY HOSTS YOU OWN ──</footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
